@@ -1,0 +1,447 @@
+﻿@model MoonView.Models.Website
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="zxx">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MOONVIEW - Real Estate</title>
+    <!-- favicon -->
+    <link rel=icon href=../assets/img/favicon.png sizes="20x20" type="image/png">
+    <!-- Vendor Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/vendor.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- responsive Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+    <!-- preloader area start -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <div class="body-overlay" id="body-overlay"></div>
+
+
+    @using (Html.BeginForm("UnitAvailability", "Website", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+    {
+
+
+
+    <!-- navbar start -->
+        <div class="navbar-area">
+            <nav class="navbar navbar-area navbar-expand-lg">
+                <div class="container nav-container">
+                    <div class="responsive-mobile-menu">
+                        <button class="menu toggle-btn d-block d-lg-none" data-toggle="collapse"
+                                data-target="#realdeal_main_menu" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="icon-left"></span>
+                            <span class="icon-right"></span>
+                        </button>
+                    </div>
+                    <div class="logo">
+                        <a href="index.html"><img src="../assets/img/MoonView.png" alt="logo"></a>
+                    </div>
+                    <div class="nav-right-part nav-right-part-mobile">
+                        <a class="btn btn-yellow" href="/Home/LoginWeb">
+                            Login <span class="right">
+                                <i class="la la-plus"></i>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="realdeal_main_menu">
+                        <ul class="navbar-nav menu-open">
+                            <li class="current-menu-item"><a href="/Website/Index">Home</a></li>
+                            <li class="menu-item-has-children">
+                                <a href="#">About Us</a>
+                                <ul class="sub-menu">
+                                    <li><a href="/Website/CompanyOverview">Company Overview</a></li>
+                                    <li><a href="/Website/OurTeam">Our Team</a></li>
+                                    <li><a href="/Website/VisionAndMission">Vision & Mission</a></li>
+                                    <li><a href="/Website/QualityPolicy">Quality Policy</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/Website/UnitAvailability">Unit Availability</a></li>
+                            <li><a href="/Website/Gallery">Gallery</a></li>
+                            <li><a href="/Website/Contact">Contact Us</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="nav-right-part nav-right-part-desktop">
+                        <a class="btn btn-yellow" href="/Home/LoginWeb">Login <span class="right"><i class="la la-plus"></i></span></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    <!-- navbar end -->
+    <!-- breadcrumb area start -->
+        <div class="breadcrumb-area jarallax" style="background-image:url(../assets/img/bg/4.png);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb-inner">
+                            <h1 class="page-title">Unit Availability</h1>
+                            <ul class="page-list">
+                                <li><a href="/Website/Index">Home</a></li>
+                                <li>Unit Availability</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- breadcrumb area End -->
+    <!-- Unit Availability area start -->
+        <div class="main-search-area pd-top-120 pd-bottom-90">
+            <div class="container">
+                <div class="banner-search-wrap">
+                    <ul class="nav nav-tabs rld-banner-tab">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#tabs_1">For Buy</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="tabs_1">
+                            <div class="rld-main-search">
+                                <div class="row">
+
+                                    <div class="col-xl-2 col-lg-6 col-md-6">
+                                        <div class="form-group">
+
+                                            @Html.DropDownListFor(m => m.SiteTypeID, new SelectList(ViewBag.ddlSiteType, "Value", "Text"), new { @class = "form-control", @onchange = "return onSiteTypeChange();" })
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-4 col-md-4">
+
+                                        @Html.DropDownListFor(m => m.SiteID, new SelectList(ViewBag.ddlSite, "Value", "Text"), new { @class = "form-control", @onchange = "return onSiteChange();" })
+
+                                    </div>
+                                    <div class="col-xl-2 col-lg-4 col-md-4">
+                                        @Html.DropDownListFor(m => m.SectorID, new SelectList(ViewBag.ddlSector, "Value", "Text"), new { @class = "form-control", @onchange = "return onSectorChange();" })
+                                    </div>
+                                    <div class="col-xl-2 col-lg-4 col-md-4">
+                                        @Html.DropDownListFor(m => m.BlockID, new SelectList(ViewBag.ddlBlock, "Value", "Text"), new { @class = "form-control" })
+                                    </div>
+                                    <div class="col-xl-2 col-lg-4 col-md-4">
+                                        @Html.TextBoxFor(m => m.PlotNumber, new { @class = "form-control", @placeholder = "Plot Number" })
+                                    </div>
+                                    <div class="col-xl-2 col-lg-4 col-md-4">
+                                        <input type="submit" name="Search" value="Search" id="btnSearchPlot" class="btn btn-success" onclick="return GetDetails(); " />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container availability-status">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label style="color: black;"><b><u>Availability Status</u></b></label>
+                    </div>
+                    <div class="col-md-2">
+                        <div style="border: solid; border-color: #e66b6b; background-color: #e66b6b; height: 20px; width: 20px; float: left"></div>
+                        - Booked
+                    </div>
+                    <div class="col-md-2">
+                        <div style="border: solid; border-color: #69ce69; background-color: #69ce69; height: 20px; width: 20px; float: left"></div>
+                        - Available
+                    </div>
+                    <div class="col-md-2">
+                        <div style="border: solid; border-color: yellow; background-color: yellow; height: 20px; width: 20px; float: left"></div>
+                        - On Hold
+                    </div>
+                    <div class="col-md-2">
+                        <div style="border: solid; border-color: #e470e4; background-color: #e470e4; height: 20px; width: 20px; float: left"></div>
+                        - Allotted
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-content" style="margin-left:100px;">
+                <div class="tab-pane fade show active" id="tabs_1">
+                    <div class="rld-main-search">
+
+                        <div class="row">
+                            @if (Model != null)
+                {
+                    if (Model.lstPlot != null)
+                    {
+                        foreach (var Item in Model.lstPlot)
+                        {
+                                        @*<a href="#" data-toggle="tooltip" title="Plot Amount :@Item.PlotAmount ; Plot Area :@Item.PlotArea">*@
+                                        <div style="width:15%;margin-left:0.5%;color:black;background: @Item.ColorCSS; border:Solid; float:left; height:100px; margin-bottom:0.5%; text-align:center; padding-top:0.5%">
+                                            <input type="hidden" value="@Item.PlotID" />
+                                            <input type="hidden" value="@Item.SiteID" />
+                                            <input type="hidden" value="@Item.SectorID" />
+                                            <b>Plot Number : </b>@Item.PlotNumber
+                                            <br />
+                                            <b>Plot Area : </b>@Item.PlotArea
+                                            <br />
+                                            (@Item.SectorName,@Item.BlockName)
+                                        </div>
+                                        @*</a>*@
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                    <!-- Unit Availability area end -->
+    }
+    <!-- client area start -->
+    <div class="client-area pd-top-90 pd-bottom-100">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2 class="title text-white">Our Partner</h2>
+            </div>
+            <div class="client-slider">
+                <div class="item">
+                    <div class="thumb">
+                        <img src="../assets/img/client/1.png" alt="client">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="thumb">
+                        <img src="../assets/img/client/2.png" alt="client">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="thumb">
+                        <img src="../assets/img/client/3.png" alt="client">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="thumb">
+                        <img src="../assets/img/client/4.png" alt="client">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- client area end -->
+    <!-- footer area start -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="footer-top">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a class="footer-logo" href="#"><img src="../assets/img/MoonView.png" alt="logo"></a>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="footer-social text-sm-right">
+                            <span>FOLLOW US</span>
+                            <ul class="social-icon">
+                                <li>
+                                    <a href="#" target="_blank"><i class="fa fa-facebook  "></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank"><i class="fa fa-twitter  "></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="widget widget_nav_menu">
+                            <h4 class="widget-title">About Us</h4>
+                            <p>
+                                Hand selected, local experienced agents, and neighborhood specialists, work with you to
+                                achieve your goals. The highest level of market knowledge.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="widget widget_nav_menu">
+                            <h4 class="widget-title">Quick Links</h4>
+                            <ul>
+                                <li><a href="/Website/Index">Home</a></li>
+                                <li><a href="/Website/CompanyOverview">Company Overview</a></li>
+                                <li><a href="/Website/VisionAndMission">Mission & Vision</a></li>
+                                <li><a href="/Website/UnitAvailability">Unit Availability</a></li>
+                                <li><a href="/Website/Contact">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="widget widget_nav_menu">
+                            <h4 class="widget-title">Contact Info</h4>
+                            <ul>
+                                <li>
+                                    <i class="fa fa-home" aria-hidden="true"></i> <strong>
+                                        Khajanchi Chauraha Padri Bazar Road, Gorakhpur
+                                    </strong>
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone" aria-hidden="true"></i> <strong>+91 6389 002 500</strong>
+                                </li>
+                                <li>
+                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    <strong> info@dolphininfratech.com</strong>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <form class="widget widget-subscribe">
+                            <div class="rld-single-input">
+                                <input type="text" placeholder="Full Name">
+                            </div>
+                            <div class="rld-single-input">
+                                <input type="text" placeholder="Your@email.com">
+                            </div>
+                            <button class="btn btn-yellow w-100">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copy-right text-center">
+            © Copyright 2020 MoonView All Rights Reserved.
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- back to top area start -->
+    <div class="back-to-top">
+        <span class="back-top"><i class="fa fa-angle-up"></i></span>
+    </div>
+    <!-- back to top area end -->
+    <!-- all plugins here -->
+    <script src="../assets/js/vendor.js"></script>
+    <!-- main js  -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/gallery.js"></script>
+</body>
+</html>
+<script>
+    function GetDetails() {
+
+        $(".errortext").removeClass("errortext");
+        if ($('#SiteTypeID').val() == '0') {
+            $("#SiteTypeID").addClass('errortext');
+            $('#SiteTypeID').focus();
+            return false;
+        }
+
+        if ($('#SiteID').val() == '0') {
+            $("#SiteID").addClass('errortext');
+            $('#SiteID').focus();
+            return false;
+        }
+        return true;
+    }
+    function onSiteTypeChange() {
+        //  $("#divload").css({ 'display': '' });
+
+        var value = $('#SiteTypeID').val();
+        var values = $('#SiteID').val();
+        var tr = [];
+        $.ajax({
+            url: "/Website/GetSiteBySiteType",
+            Type: "Get",
+            DataType: "JSON",
+            data: { SiteTypeID: value },
+            success: function (data) {
+                var j = 1;
+
+                //   $("#divload").css({ 'display': 'none' });
+
+                $("#SiteID").html(""); // clear before appending new list
+                $("#SiteID").empty();
+                $("#SiteID").append(
+                      $('<option></option>').val(0).html('Select Site'));
+                $.each(data.ddlSite, function (index, Sectorcount) {
+                    $("#SiteID").append(
+                          $('<option></option>').val(Sectorcount.Value).html(Sectorcount.Text));
+                });
+
+            }
+
+        });
+
+    }
+    function onSiteChange() {
+        $("#divload").css({ 'display': '' });
+
+        var value = $('#SiteID').val();
+        var values = $('#SectorID').val();
+        var tr = [];
+        $.ajax({
+            url: "/Website/GetSitesDetails",
+            Type: "Get",
+            DataType: "JSON",
+            data: { SiteID: value },
+            success: function (data) {
+                var j = 1;
+                if (data.Result == "yes") {
+                    $("#divload").css({ 'display': 'none' });
+                    $('#Rate').val(data.Rate);
+                    $("#SectorID").html(""); // clear before appending new list
+                    $("#SectorID").empty();
+                    $("#SectorID").append(
+                          $('<option></option>').val(0).html('Select Sector'));
+                    $.each(data.ddlSector, function (index, Sectorcount) {
+                        $("#SectorID").append(
+                              $('<option></option>').val(Sectorcount.Value).html(Sectorcount.Text));
+                    });
+
+                }
+                else {
+                    $("#SectorID").empty();
+                    $('#Rate').val('');
+                }
+            }
+
+        });
+
+    }
+
+    function onSectorChange() {
+
+        $("#divload").css({ 'display': '' });
+        var siteID = $('#SiteID').val();
+        var sectorID = $('#SectorID').val();
+        $.ajax({
+            url: '/Website/GetBlockList', type: 'post', dataType: 'json',
+            data: { 'SiteID': siteID, 'sectorID': sectorID },
+            success: function (data) {
+                $("#divload").css({ 'display': 'none' });
+                $("#BlockID").html(""); // clear before appending new list
+                $("#BlockID").empty();
+                $("#BlockID").append(
+                      $('<option></option>').val(0).html('Select Block'));
+                $.each(data.lstBlock, function (index, BlockCount) {
+                    $("#BlockID").append(
+                          $('<option></option>').val(BlockCount.Value).html(BlockCount.Text));
+                });
+
+            }
+
+        });
+    }
+
+
+</script>
