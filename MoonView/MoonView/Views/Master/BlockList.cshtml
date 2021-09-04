@@ -10,9 +10,6 @@
 
 @using (Html.BeginForm("BlockList", "Master", FormMethod.Post, new { @id = "form1" }))
 {
- 
-    
-
     <div class="page-header">
         <div class="page-block">
             <div class="row align-items-center">
@@ -65,7 +62,7 @@
                                                                 <td>@Item.SectorName</td>
                                                                 <td>@Item.BlockName</td>
                                                                 <td>
-                                                                    <a href="/Master/BlockMaster?BlockID=@Item.BlockID" class="btn btn-info btn-sm">Edit</a>
+                                                                    <a href="/Master/BlockMaster?BlockID=@Item.EncryptKey" class="btn btn-info btn-sm">Edit</a>
                                                                     <a href="/Master/DeleteBlock?id=@Item.BlockID" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you wish to delete this Block?');">Delete</a>
                                                                 </td>
 
