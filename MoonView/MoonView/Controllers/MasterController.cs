@@ -1563,6 +1563,7 @@ namespace MoonView.Controllers
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     Master obj = new Master();
+                    obj.BlockID = r["PK_BlockID"].ToString();
                     obj.SiteName = r["SiteName"].ToString();
                     obj.SectorID = r["PK_SectorID"].ToString();
                     obj.EncryptKey = Crypto.Encrypt(r["PK_SectorID"].ToString());
