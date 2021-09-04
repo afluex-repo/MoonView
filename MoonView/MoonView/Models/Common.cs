@@ -249,7 +249,7 @@ namespace MoonView.Models
         public static string City1 = "Lucknow";
         public static string ContactNo = "7007632551";
         public static string LandLine = "";
-        public static string Website = "moonviewinfratech.com";
+        public static string Website = "moonviewinfratech.in";
         public static string EmailID = "moonviewinfratech@gmail.com";
     }
 }
