@@ -292,7 +292,6 @@ namespace MoonView.Models
         public DataSet GetBlockList()
         {
             SqlParameter[] para ={
-             //new SqlParameter("@PK_BlockId",BlockID),
                 new SqlParameter("@SiteID",SiteID),
                                      new SqlParameter("@SectorID",SectorID),
                                      new SqlParameter("@BlockID",BlockID),
