@@ -159,4 +159,3 @@ E:\Repository\MoonView\MoonView\MoonView\bin\System.Web.Http.xml
 E:\Repository\MoonView\MoonView\MoonView\bin\System.Web.Http.WebHost.xml
 E:\Repository\MoonView\MoonView\MoonView\obj\Debug\MoonView.dll
 E:\Repository\MoonView\MoonView\MoonView\obj\Debug\MoonView.pdb
-E:\Repository\MoonView\MoonView\MoonView\obj\Debug\MoonView.csprojResolveAssemblyReference.cache
