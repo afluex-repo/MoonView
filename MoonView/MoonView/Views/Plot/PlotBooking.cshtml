@@ -352,12 +352,17 @@
         var plotAmount = (Number)(plotSize) * (Number)(plotRate);
 
         var bookingAmount = plotAmount * bookingPercent / 100;
+
+
+
         if ($('#TotalPLC').val() == "0" || $('#TotalPLC').val() == "" || $('#TotalPLC').val() == "0.00") {
             $("#NetPlotAmount").val(plotAmount);
 
         }
         else {
-            var actplotamtplc = (Number)(plotAmount) + (Number)(plc);
+            var plcamount = plotAmount * plc / 100;
+
+            var actplotamtplc = (Number)(plotAmount) + (Number)(plcamount);
             $("#NetPlotAmount").val(actplotamtplc);
         }
 
