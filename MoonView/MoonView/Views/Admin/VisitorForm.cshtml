@@ -13,6 +13,7 @@
         background: url("../files/assets/images/login-gif-11.gif") no-repeat center center rgba(0,0,0,0.25);
     }
 
+
     .errortext {
         border: 1px solid red !important;
     }
@@ -52,7 +53,7 @@
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 Select Site <span style="color: red">*</span>
-                                                @Html.DropDownListFor(m => m.SiteID, new SelectList(ViewBag.ddlSite, "Value", "Text"), new { @class = "form-control", @*@onchange = "return onSiteChange();"*@ })
+                                                @Html.DropDownListFor(m => m.SiteID, new SelectList(ViewBag.ddlSite, "Value", "Text"), new { @class = "form-control"})
                                             </div>
                                         </div>
                                         <div class="col-md-2">

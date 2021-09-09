@@ -940,6 +940,10 @@ namespace MoonView.Controllers
                     ViewBag.TransactionDate = ds.Tables[0].Rows[0]["TransactionDate"].ToString();
                     ViewBag.BankName = ds.Tables[0].Rows[0]["BankName"].ToString();
                     ViewBag.BankBranch = ds.Tables[0].Rows[0]["BankBranch"].ToString();
+                    ViewBag.BalanceAmt = (decimal.Parse(ds.Tables[0].Rows[0]["BalanceAmt"].ToString()) - decimal.Parse(ds.Tables[0].Rows[0]["Discount"].ToString())).ToString();
+                    ViewBag.RemainingAmountInwords = ds.Tables[0].Rows[0]["RemainingAmountInwords"].ToString();
+                    ViewBag.PlotRate = ds.Tables[0].Rows[0]["PlotRate"].ToString();
+
 
                     ViewBag.CompanyName = SoftwareDetails.CompanyName;
                     ViewBag.CompanyAddress = SoftwareDetails.CompanyAddress;
