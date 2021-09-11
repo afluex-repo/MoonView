@@ -26,7 +26,7 @@
         <table style="border: 0px none black;">
             <tr style="border: 0px none black;">
                 <td style="border: 0px none black;">
-                    <img src="~/assets/img/moonview.jpeg" height="140" width="123" />
+                    <img src="~/assets/img/moonview.jpeg" height="100" width="123" />
                 </td>
                 <td style="border: 0px none black;"></td>
 
@@ -79,17 +79,22 @@
 
                 <td style="border: 1px solid black;"><b>PlotRate:  </b>@ViewBag.PlotRate</td>
                 <td style="border: 1px solid black;"><b>Total Amount:     </b>@ViewBag.NetPlotAmount /-</td>
-                <td style="border: 1px solid black;"><b>Plot/Row House Amount:     </b>@ViewBag.NetPlotAmount /-</td>
-                <td style="border: 1px solid black;" colspan="2"><b>In Words:     </b>@ViewBag.NetPlotAmountInWords</td>
+                @*<td style="border: 1px solid black;"><b>Plot/Row House Amount:     </b>@ViewBag.NetPlotAmount /-</td>*@
+                <td style="border: 1px solid black;" colspan="3"><b>In Words:    </b>@ViewBag.NetPlotAmountInWords</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black;" colspan="1"><b>Paid Amount:     </b>@ViewBag.PaidAmount /-</td>
+                <td style="border: 1px solid black;" colspan="4"><b>In Words:     </b>@ViewBag.AmountInWords</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black;" colspan="2"><b>Total Paid Amount:     </b>@ViewBag.TotalPaid /-</td>
+                <td style="border: 1px solid black;" colspan="3"><b>In Words:  </b>@ViewBag.TotalPaidinwords</td>
             </tr>
             <tr>
                 <td style="border: 1px solid black;" colspan="2"><b>Remaining Amount: </b>@ViewBag.BalanceAmt  /-</td>
                 <td style="border: 1px solid black;" colspan="3"><b>In Words:  </b>@ViewBag.RemainingAmountInwords   </td>
             </tr>
-            <tr>
-                <td style="border: 1px solid black;" colspan="2"><b>Paid Amount:     </b>@ViewBag.PaidAmount /-</td>
-                <td style="border: 1px solid black;" colspan="3"><b>In Words:     </b>@ViewBag.AmountInWords</td>
-            </tr>
+            
             <tr>
                 @if (ViewBag.PaymentMode == "Cash")
                 {
@@ -192,6 +197,14 @@
                 @*<td style="text-align:left;"> 4.Receipt valid subject to realisation of cheque, $Cash, $NEFT, RTGS</td>
                     <td style="text-align:right;margin-right:100px;"><b style="margin-right: 40px;">Director Sign    </b></td>*@
             </tr>
+        </table>
+        <table style="width: 100%;" class="table table-striped">
+
+            <tbody>
+                <tr>
+                    <td style="text-align:right;margin-right:100px;"><b style="margin-right: 40px;">Auth Signatory    </b></td>
+                </tr>
+            </tbody>
         </table>
         <table style="width: 100%;text-align:center">
             <tr>

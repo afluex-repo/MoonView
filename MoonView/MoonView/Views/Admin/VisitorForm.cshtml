@@ -147,7 +147,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-
         $('#Mobile').keypress(function () {
             $('.Number').keypress(function (event) {
                 var keycode;
@@ -163,7 +162,7 @@
 
 
         $('#add').click(function () {
-
+            debugger;
             var isAllValid = true;
             if (!($('#CustomerName').val().trim() != '' && ($('#CustomerName').val().trim()))) {
                 $("#CustomerName").addClass('errortext');
@@ -273,6 +272,7 @@
                 var data = {
                     AddData: JSON.stringify(list)
                 }
+               
                 debugger;
                 //$(this).val('Please wait...');
                 $.ajax({
